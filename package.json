@@ -17,6 +17,8 @@
   },
   "homepage": "https://github.com/burandby/acmpy#readme",
   "dependencies": {
-    "express": "^4.18.2"
+    "dracula-ui": "^1.0.6",
+    "express": "^4.18.2",
+    "handlebars": "^4.7.8"
   }
 }

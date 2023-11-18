@@ -1,6 +1,8 @@
 // server.js
 const express = require('express');
 const app = express();
+const fs = require('fs');
+const handlebars = require('handlebars');
 const port = 3000;
 
 // In-memory store for tasks
@@ -31,33 +33,33 @@ app.post('/create-task', (req, res) => {
   res.send(shortLink);
 });
 
-// API endpoint to get a task based on its ID
+
 app.get('/task/:taskId', (req, res) => {
   const taskId = req.params.taskId;
   const task = tasks[taskId];
 
-  if (task) {
-    res.send(`
-<h2>Task: ${task.taskTitle}</h2>
-<p>Description: ${task.taskDesc}</p>
-<table class="tg">
-<thead>
-  <tr>
-    <th class="tg-0pky">Input</th>
-    <th class="tg-0lax">Output</th>
-  </tr>
-</thead>
-<tbody>
-  <tr>
-    <td class="tg-0lax">dkfgjdfkgjdfkg</td>
-    <td class="tg-0lax">dfkgjdkfjgkdfjgkjdfg</td>
-  </tr>
-</tbody>
-<p>Input: ${task.inp}</p>
-<p>Output: ${task.ou}</p>`);
-  } else {
-    res.status(404).send('Task not found');
-  }
+  // Read the HTML template file
+  const templatePath = __dirname + '/public/taskViewTemplate.html';
+  fs.readFile(templatePath, 'utf8', (err, template) => {
+    if (err) {
+      console.error('Error reading template file:', err);
+      res.status(500).send('Internal Server Error');
+      return;
+    }
+
+    // Compile the template using Handlebars
+    const compiledTemplate = handlebars.compile(template);
+
+    // Replace placeholders in the template with actual task details
+    const taskViewHTML = compiledTemplate({ task });
+
+    // Respond with the HTML page containing the task details
+    res.send(taskViewHTML);
+  });
+});
+
+app.get('*', function(req, res){
+  res.sendFile(__dirname + '/public/404.html');
 });
 
 app.listen(port, () => {

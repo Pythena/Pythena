@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>404</title>
+  <script src="https://unpkg.com/typewriter-effect@latest/dist/core.js"></script>
+  <style>
+  @import url("https://fonts.googleapis.com/css?family=Roboto+Mono");
+
+html, body {
+  font-family: "Roboto Mono", monospace;
+  font-size: 16px;
+}
+
+html {
+  box-sizing: border-box;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}
+
+body {
+  background-color: #000;
+}
+
+span {
+  color: #fff;
+  font-size: 24px;
+  letter-spacing: 0.2px;
+  margin: 0;
+}
+
+#app
+{
+	display: grid; 
+	place-items: center;
+	line-height: 100%; 
+	vertical-align: middle;
+	height:100vh;
+	align-content: center;
+    align-items: center;
+    justify-items: center;
+}
+  </style>
+
+</head>
+<body>
+<div id="app">
+</div>
+<script>
+var app = document.getElementById('app');
+
+var typewriter = new Typewriter(app, {
+    loop: false,
+	delay: 50,
+	cursor: ''
+});
+
+typewriter.typeString('Oopsie! You found a 404!')
+    .start();
+</script>
+</body>
+</html>
