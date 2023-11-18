@@ -1,0 +1,22 @@
+{
+  "name": "acmpy",
+  "version": "0.1.2",
+  "description": "ACMpy is a client-based ACM testing for simple contest sharing.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/burandby/acmpy.git"
+  },
+  "author": "Bur.",
+  "license": "GPL-3.0-or-later",
+  "bugs": {
+    "url": "https://github.com/burandby/acmpy/issues"
+  },
+  "homepage": "https://github.com/burandby/acmpy#readme",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
