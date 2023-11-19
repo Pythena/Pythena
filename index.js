@@ -15,6 +15,11 @@ app.get('/', (req, res) => {
   res.sendFile(__dirname + '/public/index.html');
 });
 
+app.get('/faq', (req, res) => {
+  res.sendFile(__dirname + '/public/faq.html');
+});
+
+
 // API endpoint to create a task
 app.post('/create-task', (req, res) => {
   const taskTitle = req.body.taskTitle;
@@ -33,6 +38,12 @@ app.post('/create-task', (req, res) => {
   res.send(shortLink);
 });
 
+app.post('/code/:bcode', (req, res) => {
+  const bcode = req.params.bcode;
+  const code = Buffer.from(bcode, 'base64').toString('ascii');
+
+
+});
 
 app.get('/task/:taskId', (req, res) => {
   const taskId = req.params.taskId;

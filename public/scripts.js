@@ -2,6 +2,7 @@
 document.addEventListener('DOMContentLoaded', () => {
   const taskForm = document.getElementById('create-task-form');
   const shortLinkElement = document.getElementById('short-link');
+  const shortLinkA = document.getElementById('shortlinka');
 
   taskForm.addEventListener('submit', async (event) => {
     event.preventDefault();
@@ -21,7 +22,10 @@ document.addEventListener('DOMContentLoaded', () => {
     if (response.ok) {
       // Display the short link to the user
       const shortLink = await response.text();
-      shortLinkElement.textContent = `Short Link: ${shortLink}`;
+      shortLinkElement.textContent = `Short Link:`;
+      shortLinkA.href = shortLink;
+      shortLinkA.textContent = shortLink;
+      shortLinkA.style = "color: ghostwhite;"
     } else {
       console.error('Failed to create task');
     }
