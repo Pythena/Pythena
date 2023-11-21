@@ -34,7 +34,7 @@ app.post('/create-task', (req, res) => {
   tasks[taskId] = { taskTitle, taskDesc, inp, ou };
 
   // Respond with the generated short link
-  const shortLink = `http://localhost:3000/task/${taskId}`;
+  const shortLink = `https://mauve-elk-coat.cyclic.app/task/${taskId}`;
   res.send(shortLink);
 });
 
